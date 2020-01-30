@@ -1,13 +1,14 @@
 import React from 'react';
 import {ThemeContext} from '../Contexts/ThemeContext'
+import { AuthContext } from '../Contexts/AuthContext';
 export default class BookList extends React.Component {    
     
     render() { 
         
         return (
             <ThemeContext.Consumer>
-                {(context)=> {
-                const {isLightTheme,light,dark}=context
+                {(themeContext)=> {
+                const {isLightTheme,light,dark}=themeContext
                 const theme=isLightTheme? light : dark
                 return(
              <div className="book-list" style={{color: theme.syntax, background : theme.bg}} >
@@ -22,7 +23,8 @@ export default class BookList extends React.Component {
             }
                 
             </ThemeContext.Consumer> 
-               )
+                    )
+               
                 }
              }
             
