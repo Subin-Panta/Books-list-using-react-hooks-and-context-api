@@ -1,23 +1,24 @@
-import React, {useContext} from 'react';
-import {ThemeContext} from '../Contexts/ThemeContext'
-import { AuthContext } from '../Contexts/AuthContext';
-import { BookContext } from '../Contexts/BookContext';
-
+import React ,{useContext} from 'react'
+import { BookContext } from '../Context/BookContext';
+import BookDetails from './BookDetails'
 const BookList = () => {
-    const{isLightTheme,light,dark} =useContext(ThemeContext)
-    const {books}=useContext(BookContext)    
-    const theme=isLightTheme? light : dark
-        return(
-     <div className="book-list" style={{color: theme.syntax, background : theme.bg}} >
-        <ul >
-            {books.map(book => {
-                return(
-                    <li key={book.id} style={{background: theme.ui}}>{book.title}</li>
-                )
-            })}
-        </ul>
-    </div>
-        )
-        }
+    const { books } =useContext(BookContext)
+    return books.length ? ( 
+      <div className="book-list">
+          <ul>
+              {books.map(book => {
+                  return(
+                      <BookDetails books={book}  key= {book.id} />
+                  )
+              })}
+              
+          </ul>
+      </div>
+     ) : (
+         <div className="empty">
+         Finished Reading Everything
+         </div>
+     )
+}
  
 export default BookList;

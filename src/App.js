@@ -1,25 +1,20 @@
-import React from 'react'
-import NavBar from './components/NavBar'
-import BookList from './components/BookList'
-import ThemeContextProvider from './Contexts/ThemeContext'
-import ThemeToggle from './components/ThemeToggle'
-import AuthContextProvider from './Contexts/AuthContext'
-import BookContextProvider from './Contexts/BookContext'
-
+import React from 'react';
+import BookContextProvider from './Context/BookContext';
+import NavBar from './components/NavBar';
+import BookList from './components/BookList';
+import NewBookForm from './components/NewBookForm';
 function App() {
   return (
-    <div className="App">
-      <ThemeContextProvider>
-        <AuthContextProvider>
-          <NavBar />
-          <BookContextProvider>
-          <BookList/>
-          </BookContextProvider>
-          <ThemeToggle />
-        </AuthContextProvider>
-     </ThemeContextProvider>
+    <div className= "App">
+    <BookContextProvider>
+      <NavBar />
+      <BookList />
+      <NewBookForm />
+    </BookContextProvider>
+          
+    
     </div>
-  );
-}
-
+    );
+} 
+ 
 export default App;
